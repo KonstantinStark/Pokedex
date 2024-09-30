@@ -19,15 +19,19 @@
     <header>
         <div class="header">
             <img class="pokedex-logo" src="./assets/img/Pokedex.png">
+
+            <div class="search-area">
+                <input type="text" id="search-input" placeholder="Pokédex durchsuchen" />
+                <img onclick="search" class="search-btn-img" src="./assets/img/search-poke.png" alt="Search"
+                    id="search-btn" />
+            </div>
         </div>
     </header>
 
 
     <section>
         <div class="main-container">
-            <h1>Pokedex</h1>
-
-            <dev id="content"></dev>
+            <div id="content"></div>
         </div>
     </section>
 

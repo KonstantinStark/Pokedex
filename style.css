@@ -1,3 +1,97 @@
-pokedex-logo {
+.pokedex-logo {
+    width: 250px;
+}
+
+.poke-logo {
     width: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    border: 2px solid #ccc;
+    padding: 10px 10px;
+    border-radius: 15px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+    display: flex;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#search-input:hover {
+    border-color: #007bff;
+}
+
+.search-btn-img {
+    cursor: pointer;
+    width: 40px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.search-btn-img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.search-btn-img:active {
+    transform: scale(0.95);
+    filter: brightness(1);
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.poke-content {
+    display: flex;
+    flex-direction: row;
+    padding: 40px 40px 40px 40px;
+}
+
+.poke-cards {
+    border: solid black;
+    border-radius: 10px;
+    width: 250px;
+    height: 240px;
+    background-color: #FFE031;
+    box-shadow: 1px 1px 12px 1px #000000;
+}
+
+.poke-cards:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.poke-char {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+
+}
+
+.poke-char-img {
+    width: 100px;
+    height: 100px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.poke-char-img:hover {
+    width: 150px;
+    height: 150px;
+    transform-origin: center;
 }
