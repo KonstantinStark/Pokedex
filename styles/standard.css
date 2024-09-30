@@ -1,0 +1,42 @@
+.header {
+    background-color: #FFE031;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #396BBA;
+}
+
+.footer {
+    background-color: #FFE031;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.impressum {
+    text-decoration: none;
+    color: #396BBA;
+    font-size: 20px;
+}
+
+.datenschutz {
+    text-decoration: none;
+    color: #396BBA;
+    font-size: 20px;
+}
+
+.poke-logo {
+    width: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
