@@ -3,7 +3,7 @@ function init() {
 }
 
 async function fetchPokemonData() {
-    let pokemon = await fetch('https://pokeapi.co/api/v2/pokemon?limit=50&offset=0');
+    let pokemon = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15&offset=24');
     let pokemonContent = await pokemon.json();
     console.log(pokemonContent);
 
@@ -21,27 +21,34 @@ async function fetchPokemonData() {
         
         <div class="poke-content">
             <div class="poke-cards">
-                <div class="poke-char">
-                    <h1>${element.name}</h1>
-                    <img class="poke-char-img" src="${pokemonData.sprites.other['official-artwork'].front_default}">
-                    
-                </div>
-                <div class="poke-types">
+                <div class="poke-id"><p class="poke-id-text">#${pokemonData.id}</p></div>
+                    <div class="poke-char">
+                        <h1>${element.name}</h1> 
+                        <div class="poke-circle">                   
+                        <img class="poke-char-img" src="${pokemonData.sprites.other['official-artwork'].front_default}">
+                        </div>
+                    </div>
+                <div>
                     <p id="types${index}"></p>
-                    
                 </div>
             </div>
         </div>
         `
 
-        if (pokemonData.types.length = 1) {
+        if (pokemonData.types.length <= 1) {
             document.getElementById(`types${index}`).innerHTML += /*html*/`
-            <span class="poke-type-zero">${pokemonData.types[0].type.name}</span>
+            <div class="test2">
+            <span class="${pokemonData.types[0].type.name} poke-type-zero">${pokemonData.types[0].type.name}</span>
+            </div>
         `
         } else {
             document.getElementById(`types${index}`).innerHTML += /*html*/`
-            <span class="poke-type-zero">${pokemonData.types[0].type.name}</span> 
-            <span class="poke-type-one">${pokemonData.types[1].type.name}</span>
+            <div>
+                <div class="test">
+                    <span class="${pokemonData.types[0].type.name} poke-type-zero">${pokemonData.types[0].type.name}</span> 
+                    <span class="${pokemonData.types[1].type.name} poke-type-one">${pokemonData.types[1].type.name}</span>
+                </div>
+            </div>
         `
         }
     }
