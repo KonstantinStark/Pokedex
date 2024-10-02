@@ -22,7 +22,7 @@
             <img class="pokedex-logo" src="./assets/img/Pokedex.png">
 
             <div class="search-area">
-                <input type="text" id="search-input" placeholder="Pokédex durchsuchen" />
+                <input type="text" id="search-input" placeholder="Search for a Pokémon" />
                 <img onclick="search" class="search-btn-img" src="./assets/img/search-poke.png" alt="Search"
                     id="search-btn" />
             </div>
@@ -31,8 +31,12 @@
 
 
     <section>
+        <img id="loading" src="./assets/img/Poké_Ball_icon.svg" style="display: none;">
         <div class="main-container">
             <div id="content"></div>
+        </div>
+        <div class="load-button">
+            <button class="load-button-style" onclick="loadMorePokemon()">Load more</button>
         </div>
     </section>
 
