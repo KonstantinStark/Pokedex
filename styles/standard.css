@@ -54,6 +54,23 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: capitalize;
+    background-color: #ffffff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    padding: 3px;
+}
+
 span {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;

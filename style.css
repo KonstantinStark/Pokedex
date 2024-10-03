@@ -235,3 +235,81 @@
     transform: scale(0.95);
     filter: brightness(1);
 }
+
+.overlay {
+    position: fixed;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.overlay-content {
+    background: white;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    background-image: url('./assets/img/pokeland.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 20px;
+    color: #c2c2c2;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    transform: scale(1.3);
+}
+
+.close-btn:active {
+    transform: scale(0.95);
+}
+
+.overlay-pokemon-image {
+    width: 360px;
+    height: 360px;
+    padding: 30px;
+    transition: width 0.3s ease, height 0.3s ease, transform 0.5s ease;
+    filter: drop-shadow(0px 3px 1.6px #000000);
+    transform-style: preserve-3d;
+    animation: float 1.5s ease-in-out infinite
+}
+
+.overlay-types {
+    background-color: #FFE031;
+    padding: 20px;
+}
+
+.second-stats {
+    background-color: #ffffff;
+    height: 300px;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.arrow {
+    cursor: pointer;
+    font-size: 2rem;
+    position: absolute;
+    top: 57.5%;
+    transform: translateY(-50%);
+    padding: 0 10px;
+    color: #afafaf;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}

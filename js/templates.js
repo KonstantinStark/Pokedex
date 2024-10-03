@@ -1,6 +1,6 @@
 function generatePokemonCard(pokemonData, element, index) {
     return `
-    <div class="poke-content">
+    <div class="poke-content" onclick="openOverlay(${index})">
         <div class="poke-cards">
             <div class="poke-id"><p class="poke-id-text">#${pokemonData.id}</p></div>
             <div class="poke-char">

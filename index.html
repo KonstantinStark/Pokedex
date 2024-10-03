@@ -38,6 +38,28 @@
         <div class="load-button">
             <button class="load-button-style" onclick="loadMorePokemon()">Load more</button>
         </div>
+
+        <div id="overlay" class="overlay" style="display: none;">
+            <div class="overlay-content">
+                <span class="arrow left" onclick="arrowLeft()">&#9664;</span> <!-- Pfeil nach links -->
+                <h2 id="pokemon-name"></h2>
+                <img id="pokemon-image" class="overlay-pokemon-image" alt="Pokemon Image">
+                <div class="overlay-types">
+                    <p id="pokemon-height"></p>
+                    <p id="pokemon-weight"></p>
+                    <p id="pokemon-type"></p>
+                </div>
+                <span class="close-btn" onclick="closeOverlay()">X</span>
+                <div class="second-stats">
+                    <div>
+
+                    </div>
+                </div>
+                <span class="arrow right" onclick="arrowRight()">&#9654;</span> <!-- Pfeil nach rechts -->
+            </div>
+        </div>
+
+
     </section>
 
 

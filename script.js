@@ -1,9 +1,10 @@
 let offset = 0;
+let pokemonArray = [];
+let currentPokemonIndex = 0;
 
 function init() {
     fetchPokemonData();
-    arrowLeft();
-    arrowRight();
+    addKeyboardNavigation();
 }
 
 async function fetchPokemonData(offset = 0) {
@@ -18,6 +19,8 @@ async function fetchPokemonData(offset = 0) {
         let pokemonDetails = await fetch(element.url);
         let pokemonData = await pokemonDetails.json();
 
+        pokemonArray.push(pokemonData);
+
         htmlContent.innerHTML += generatePokemonCard(pokemonData, element, index + offset);
         renderTypes(pokemonData, element, index + offset);
     }
@@ -29,7 +32,7 @@ function renderTypes(pokemonData, element, index) {
         <div class="type-zero">
         <span class="${pokemonData.types[0].type.name} poke-type-zero">${pokemonData.types[0].type.name}</span>
         </div>
-    `
+    `;
     } else {
         document.getElementById(`types${index}`).innerHTML += /*html*/`
         <div>
@@ -38,7 +41,7 @@ function renderTypes(pokemonData, element, index) {
                 <span class="${pokemonData.types[1].type.name} poke-type-one">${pokemonData.types[1].type.name}</span>
             </div>
         </div>
-    `
+    `;
     }
 }
 
@@ -53,11 +56,57 @@ async function loadMorePokemon() {
     document.getElementById('content').classList.remove('loading');
 }
 
+function openOverlay(index) {
+    currentPokemonIndex = index;
+    updateOverlayContent(currentPokemonIndex);
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('content').classList.add('loading');
+    document.querySelector('.load-button').style.display = 'none';
+}
 
+function updateOverlayContent(index) {
+    let pokemonData = pokemonArray[index];
 
+    document.getElementById('pokemon-name').textContent = pokemonData.name;
+    document.getElementById('pokemon-image').src = pokemonData.sprites.other['official-artwork'].front_default;
+    document.getElementById('pokemon-height').textContent = `Height: ${pokemonData.height}`;
+    document.getElementById('pokemon-weight').textContent = `Weight: ${pokemonData.weight}`;
+    document.getElementById('pokemon-type').textContent = `Type: ${pokemonData.types.map(type => type.type.name).join(', ')}`;
+}
 
+function closeOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('content').classList.remove('loading');
+    document.querySelector('.load-button').style.display = '';
+}
 
+function arrowLeft() {
+    if (currentPokemonIndex <= 0) {
+        currentPokemonIndex = pokemonArray.length - 1;  // 
+    } else {
+        currentPokemonIndex--;
+    }
+    updateOverlayContent(currentPokemonIndex);
+}
 
+function arrowRight() {
+    if (currentPokemonIndex >= pokemonArray.length - 1) {
+        currentPokemonIndex = 0;
+    } else {
+        currentPokemonIndex++
+    }
+    updateOverlayContent(currentPokemonIndex);
+}
+
+function addKeyboardNavigation() {
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') {
+            arrowLeft();
+        } else if (event.key === 'ArrowRight') {
+            arrowRight();
+        }
+    });
+}
 
 
 
