@@ -104,60 +104,8 @@ function addKeyboardNavigation() {
             arrowLeft();
         } else if (event.key === 'ArrowRight') {
             arrowRight();
+        } else if (event.key === 'Escape') {
+            closeOverlay();
         }
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Overlay Pokemon
-// async function toggleOverlay(index) {
-//     let overlayRef = document.getElementById('overlay');
-//     overlayRef.classList.toggle('d_none');
-
-//     if (index !== 'end') {
-
-//     }
-//     indexNumber = index;
-// }
-
-// function arrowLeft() {
-//     if (indexNumber <= 0) {
-//         indexNumber = myImg.length - 1;
-//     } else {
-//         indexNumber = indexNumber - 1;
-//     }
-
-//     let arrowLeft = document.getElementById('overlay_img');
-//     arrowLeft.innerHTML = `<img src="img/${myImg[indexNumber]}">`;
-// }
-
-// function arrowRight() {
-//     if (indexNumber >= myImg.length - 1) {
-//         indexNumber = 0;
-//     } else {
-//         indexNumber = indexNumber + 1;
-//     }
-
-//     let arrowRight = document.getElementById('overlay_img');
-//     arrowRight.innerHTML = `<img src="img/${myImg[indexNumber]}">`;
-// }
-
-

@@ -20,7 +20,6 @@
     <header>
         <div class="header">
             <img class="pokedex-logo" src="./assets/img/Pokedex.png">
-
             <div class="search-area">
                 <input type="text" id="search-input" placeholder="Search for a Pokémon" />
                 <img onclick="search" class="search-btn-img" src="./assets/img/search-poke.png" alt="Search"
@@ -39,27 +38,26 @@
             <button class="load-button-style" onclick="loadMorePokemon()">Load more</button>
         </div>
 
+
         <div id="overlay" class="overlay" style="display: none;">
             <div class="overlay-content">
-                <span class="arrow left" onclick="arrowLeft()">&#9664;</span> <!-- Pfeil nach links -->
+                <span class="arrow left" onclick="arrowLeft()">&#9664;</span>
                 <h2 id="pokemon-name"></h2>
                 <img id="pokemon-image" class="overlay-pokemon-image" alt="Pokemon Image">
                 <div class="overlay-types">
-                    <p id="pokemon-height"></p>
-                    <p id="pokemon-weight"></p>
-                    <p id="pokemon-type"></p>
+                    <p class="type-text" id="pokemon-height"></p>
+                    <p class="type-text" id="pokemon-weight"></p>
+                    <p class="type-text" id="pokemon-type"></p>
                 </div>
-                <span class="close-btn" onclick="closeOverlay()">X</span>
+                <span class="close-btn" onclick="closeOverlay()">❌</span>
                 <div class="second-stats">
                     <div>
-
+                        weitere Infos und Stats
                     </div>
                 </div>
-                <span class="arrow right" onclick="arrowRight()">&#9654;</span> <!-- Pfeil nach rechts -->
+                <span class="arrow right" onclick="arrowRight()">&#9654;</span>
             </div>
         </div>
-
-
     </section>
 
 
@@ -74,7 +72,6 @@
             </div> -->
         </div>
     </section>
-
 </body>
 
 </html>
