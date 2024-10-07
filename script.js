@@ -86,11 +86,9 @@ function updateOverlayContent(index) {
 
     document.getElementById('pokemon-name').textContent = pokemonData.name;
     document.getElementById('pokemon-image').src = pokemonData.sprites.other['official-artwork'].front_default;
-
-    // Formatierung für Height, Weight und Type
-    document.getElementById('pokemon-height').innerHTML = `<strong>Height:</strong> ${pokemonData.height} dm`;
-    document.getElementById('pokemon-weight').innerHTML = `<strong>Weight:</strong> ${pokemonData.weight} hg`;
-    document.getElementById('pokemon-type').innerHTML = `<strong>Type:</strong> ${pokemonData.types.map(type => type.type.name).join(', ')}`;
+    document.getElementById('pokemon-height').textContent = `Height: ${pokemonData.height} dm`;
+    document.getElementById('pokemon-weight').textContent = `Weight: ${pokemonData.weight} hg`;
+    document.getElementById('pokemon-type').textContent = `Type: ${pokemonData.types.map(type => type.type.name).join(', ')}`;
 
     setTimeout(() => {
         let stats = pokemonData.stats.map(stat => stat.base_stat);
@@ -187,3 +185,4 @@ function addKeyboardNavigation() {
         }
     });
 }
+
