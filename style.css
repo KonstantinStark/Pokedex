@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-#search-input {
+#searchBar {
     border: 2px solid #ccc;
     padding: 10px 10px;
     border-radius: 15px;
@@ -25,7 +25,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#search-input:hover {
+#searchBar:hover {
     border-color: #007bff;
 }
 
@@ -47,6 +47,22 @@
 .search-btn-img:active {
     transform: scale(0.95);
     filter: brightness(1);
+}
+
+#searchResults {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pokemon-card {
+    width: 150px;
+    text-align: center;
+}
+
+.pokemon-card img {
+    width: 100px;
+    height: 100px;
 }
 
 #content {
@@ -244,6 +260,10 @@
     transform: translate(-50%, -50%);
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 .overlay-content {
     background: white;
     border-radius: 10px;
@@ -290,9 +310,15 @@
 
 .second-stats {
     background-color: #f7e8b1;
-    height: 300px;
+    padding: 20px;
+    height: auto;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+#statsChart {
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .arrow {
@@ -319,4 +345,92 @@
 
 .arrow.right {
     right: 10px;
+}
+
+@media(max-width: 800px) {
+    .poke-cards:hover {
+        transform: rotateX(15deg) scale(1.2);
+    }
+}
+
+@media(max-width: 666px) {
+    .poke-cards:hover {
+        transform: rotateX(15deg) scale(1.0);
+    }
+}
+
+
+
+@media(max-width: 670px) {
+    .poke-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media(max-width: 590px) {
+    .poke-content {
+        padding: 15px;
+    }
+}
+
+@media(max-width: 570px) {
+    .poke-content {
+        padding: 20px;
+    }
+}
+
+@media(max-width: 625px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .pokedex-logo {
+        padding-bottom: 15px;
+    }
+}
+
+@media(max-width: 445px) {
+    .overlay {
+        width: 375px;
+    }
+
+    .overlay-pokemon-image {
+        padding: 50px;
+        ;
+    }
+
+    .overlay-types {
+        margin-top: -65px;
+    }
+}
+
+@media(max-width: 380px) {
+    .overlay {
+        width: 345px;
+    }
+
+    .overlay-pokemon-image {
+        padding: 70px;
+        ;
+    }
+
+    .overlay-types {
+        margin-top: -94px;
+    }
+}
+
+@media(max-width: 350px) {
+    .overlay {
+        width: 315px;
+    }
+
+    .overlay-pokemon-image {
+        padding-bottom: 75px;
+        margin-bottom: 20px;
+    }
+
+    .overlay-types {
+        margin-top: -124px;
+    }
 }
