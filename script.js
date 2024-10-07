@@ -6,6 +6,7 @@ let chartInstance = null;
 function init() {
     fetchPokemonData();
     addKeyboardNavigation();
+    document.getElementById('searchBar').addEventListener('input', searchPokemon);
 }
 
 function searchPokemon() {
@@ -184,7 +185,3 @@ function addKeyboardNavigation() {
         }
     });
 }
-
-document.getElementById('searchInput').addEventListener('input', searchPokemon);
-
-init();
