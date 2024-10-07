@@ -303,6 +303,19 @@
     animation: float 1.5s ease-in-out infinite
 }
 
+.evolution-stage {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+}
+
+.evolution-stage img {
+    width: 10px;
+    /* Oder jede gewünschte Größe */
+    height: 10px;
+    /* Oder jede gewünschte Größe */
+}
+
 .overlay-types {
     background-color: #0000008f;
     padding: 8px;
