@@ -8,6 +8,29 @@ function init() {
     addKeyboardNavigation();
 }
 
+function searchPokemon() {
+    let searchTerm = document.getElementById('searchBar').value.toLowerCase();
+    if (searchTerm.length < 3) {
+        document.getElementById('content').innerHTML = '';
+        pokemonArray.forEach((pokemon, index) => {
+            document.getElementById('content').innerHTML += generatePokemonCard(pokemon, pokemon, index);
+            renderTypes(pokemon, pokemon, index);
+        });
+        return;
+    }
+
+    let filteredPokemon = pokemonArray.filter(pokemon =>
+        pokemon.name.toLowerCase().includes(searchTerm)
+    ).slice(0, 10);
+
+    document.getElementById('content').innerHTML = '';
+    filteredPokemon.forEach((pokemon, index) => {
+        let originalIndex = pokemonArray.findIndex(p => p.id === pokemon.id);
+        document.getElementById('content').innerHTML += generatePokemonCard(pokemon, pokemon, originalIndex);
+        renderTypes(pokemon, pokemon, originalIndex);
+    });
+}
+
 async function fetchPokemonData(offset = 0) {
     let pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=15&offset=${offset}`);
     let pokemonContent = await pokemon.json();
@@ -57,61 +80,24 @@ async function loadMorePokemon() {
     document.getElementById('content').classList.remove('loading');
 }
 
-function searchPokemon() {
-    const searchTerm = document.getElementById('searchBar').value.toLowerCase();
-
-    // Wenn weniger als 3 Buchstaben eingegeben wurden, zeige alle Pokémon wieder an
-    if (searchTerm.length < 3) {
-        document.getElementById('content').innerHTML = '';
-        pokemonArray.forEach((pokemon, index) => {
-            document.getElementById('content').innerHTML += generatePokemonCard(pokemon, pokemon, index);
-            renderTypes(pokemon, pokemon, index);
-        });
-        return; // Beende die Funktion hier
-    }
-
-    // Filtere die Pokémon nach Namen, wenn 3 oder mehr Buchstaben eingegeben wurden
-    const filteredPokemon = pokemonArray.filter(pokemon =>
-        pokemon.name.toLowerCase().includes(searchTerm)
-    ).slice(0, 10); // Zeige maximal 10 Pokémon an
-
-    // Leere den Inhalt und füge die gefilterten Pokémon hinzu
-    document.getElementById('content').innerHTML = '';
-    filteredPokemon.forEach((pokemon, index) => {
-        // Hier wird der korrekte Index aus pokemonArray verwendet
-        const originalIndex = pokemonArray.findIndex(p => p.id === pokemon.id);
-        document.getElementById('content').innerHTML += generatePokemonCard(pokemon, pokemon, originalIndex);
-        renderTypes(pokemon, pokemon, originalIndex);
-    });
-}
-
-function openOverlay(index) {
-    currentPokemonIndex = index;
-    updateOverlayContent(currentPokemonIndex);
-    document.getElementById('overlay').style.display = 'block';
-    document.getElementById('content').classList.add('loading');
-    document.querySelector('.load-button').style.display = 'none';
-    document.body.classList.add('no-scroll');
-}
-
 function updateOverlayContent(index) {
     let pokemonData = pokemonArray[index];
 
     document.getElementById('pokemon-name').textContent = pokemonData.name;
     document.getElementById('pokemon-image').src = pokemonData.sprites.other['official-artwork'].front_default;
-    document.getElementById('pokemon-height').textContent = `Height: ${pokemonData.height}`;
-    document.getElementById('pokemon-weight').textContent = `Weight: ${pokemonData.weight}`;
+    document.getElementById('pokemon-height').textContent = `Height: ${pokemonData.height} dm`;
+    document.getElementById('pokemon-weight').textContent = `Weight: ${pokemonData.weight} hg`;
     document.getElementById('pokemon-type').textContent = `Type: ${pokemonData.types.map(type => type.type.name).join(', ')}`;
 
     setTimeout(() => {
-        const stats = pokemonData.stats.map(stat => stat.base_stat);
-        const statsLabels = pokemonData.stats.map(stat => stat.stat.name);
+        let stats = pokemonData.stats.map(stat => stat.base_stat);
+        let statsLabels = pokemonData.stats.map(stat => stat.stat.name);
 
         if (chartInstance !== null) {
             chartInstance.destroy();
         }
 
-        const ctx = document.getElementById('statsChart').getContext('2d');
+        let ctx = document.getElementById('statsChart').getContext('2d');
         chartInstance = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -153,6 +139,15 @@ function updateOverlayContent(index) {
     }, 100);
 }
 
+function openOverlay(index) {
+    currentPokemonIndex = index;
+    updateOverlayContent(currentPokemonIndex);
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('content').classList.add('loading');
+    document.querySelector('.load-button').style.display = 'none';
+    document.body.classList.add('no-scroll');
+}
+
 function closeOverlay() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('content').classList.remove('loading');
@@ -190,8 +185,6 @@ function addKeyboardNavigation() {
     });
 }
 
-// Event-Listener für die Suchfunktion
 document.getElementById('searchInput').addEventListener('input', searchPokemon);
 
-// Initialisiere die Seite
 init();
