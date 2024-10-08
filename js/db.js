@@ -13,6 +13,18 @@ async function fetchPokemonData(offset = 0) {
     }
 }
 
+async function loadMorePokemon() {
+    const loadButton = document.querySelector('.load-button-style');
+    loadButton.style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('content').classList.add('loading');
+    offset += 15;
+    await fetchPokemonData(offset);
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').classList.remove('loading');
+    loadButton.style.display = 'block';
+}
+
 function renderTypes(pokemonData, element, index) {
     const typeHTML = generateTypeHTML(pokemonData, index);
     document.getElementById(`types${index}`).innerHTML += typeHTML;
