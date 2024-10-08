@@ -140,6 +140,7 @@ function updateOverlayContent(index) {
     }, 100);
 }
 
+
 function openOverlay(index) {
     currentPokemonIndex = index;
     updateOverlayContent(currentPokemonIndex);
@@ -185,4 +186,3 @@ function addKeyboardNavigation() {
         }
     });
 }
-
