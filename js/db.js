@@ -3,7 +3,6 @@ async function fetchPokemonData(offset = 0) {
     let pokemonContent = await pokemon.json();
     let htmlContent = document.getElementById('content');
     let results = pokemonContent.results;
-
     for (let index = 0; index < results.length; index++) {
         let element = results[index];
         let pokemonDetails = await fetch(element.url);
@@ -15,22 +14,8 @@ async function fetchPokemonData(offset = 0) {
 }
 
 function renderTypes(pokemonData, element, index) {
-    if (pokemonData.types.length <= 1) {
-        document.getElementById(`types${index}`).innerHTML += /*html*/`
-        <div class="type-zero">
-        <span class="${pokemonData.types[0].type.name} poke-type-zero">${pokemonData.types[0].type.name}</span>
-        </div>
-    `;
-    } else {
-        document.getElementById(`types${index}`).innerHTML += /*html*/`
-        <div>
-            <div class="type-one">
-                <span class="${pokemonData.types[0].type.name} poke-type-zero">${pokemonData.types[0].type.name}</span> 
-                <span class="${pokemonData.types[1].type.name} poke-type-one">${pokemonData.types[1].type.name}</span>
-            </div>
-        </div>
-    `;
-    }
+    const typeHTML = generateTypeHTML(pokemonData, index);
+    document.getElementById(`types${index}`).innerHTML += typeHTML;
 }
 
 function updateOverlayContent(index) {
@@ -50,11 +35,9 @@ function updatePokemonDetails(pokemonData) {
 function updatePokemonStatsChart(pokemonData) {
     let stats = pokemonData.stats.map(stat => stat.base_stat);
     let statsLabels = pokemonData.stats.map(stat => stat.stat.name);
-
     if (chartInstance !== null) {
         chartInstance.destroy();
     }
-
     let ctx = document.getElementById('statsChart').getContext('2d');
     chartInstance = new Chart(ctx, {
         type: 'bar',
