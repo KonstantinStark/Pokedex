@@ -4,17 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="icon" type="image/x-icon" href="./assets/img/Poké_Ball_icon.svg">
-    <link rel="stylesheet" href="./styles/assets.css">
     <link rel="stylesheet" href="./styles/standard.css">
-    <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/colors.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./style.css">
-    <script src="script.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="./js/templates.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/search.js"></script>
+    <script src="script.js"></script>
+    <script src="js/db.js"></script>
+
     <title>Pokedex</title>
 </head>
 
@@ -42,16 +46,15 @@
             <button class="load-button-style" onclick="loadMorePokemon()">Load more</button>
         </div>
 
-
         <div id="overlay" class="overlay" style="display: none;">
             <div class="overlay-content">
                 <span class="arrow left" onclick="arrowLeft()">&#9664;</span>
-                <h2 id="pokemon-name"></h2>
-                <img id="pokemon-image" class="overlay-pokemon-image" alt="Pokemon Image">
+                <h2 id="pokemonName"></h2>
+                <img id="pokemonImage" class="overlay-pokemon-image" alt="Pokemon Image">
                 <div class="overlay-types">
-                    <p class="type-text" id="pokemon-height"></p>
-                    <p class="type-text" id="pokemon-weight"></p>
-                    <p class="type-text" id="pokemon-type"></p>
+                    <p class="type-text" id="pokemonHeight"></p>
+                    <p class="type-text" id="pokemonWeight"></p>
+                    <p class="type-text" id="pokemonType"></p>
                 </div>
                 <span class="close-btn" onclick="closeOverlay()">❌</span>
                 <div class="second-stats">
@@ -65,13 +68,7 @@
 
     <section>
         <div class="footer">
-            <!-- <div class="imp">
-                <a class="impressum" href="impressum.html">Impressum</a>
-            </div> -->
             <img class="poke-logo" src="./assets/img/Poké_Ball_icon.svg">
-            <!-- <div class=" data">
-                <a class="datenschutz" href="datenschutz.html">Datenschutz</a>
-            </div> -->
         </div>
     </section>
 </body>

@@ -43,3 +43,14 @@ function closeOverlay() {
     document.querySelector('.load-button').style.display = '';
     document.body.classList.remove('no-scroll');
 }
+
+async function loadMorePokemon() {
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('content').classList.add('loading');
+
+    offset += 15;
+    await fetchPokemonData(offset);
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('content').classList.remove('loading');
+}
